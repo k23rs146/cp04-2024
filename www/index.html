@@ -8,7 +8,17 @@
   <script src="lib/onsenui/js/onsenui.min.js"></script>
   <link rel="stylesheet" href="components/loader.css">
   <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
-  <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">...:]
+
+
+
+  ]
+  ]
+
+  ]
+
+
+  ]
   <link rel="stylesheet" href="css/style.css">
   <style>
 
@@ -217,10 +227,11 @@
             $("#time").html("経過時間： " + etime);
             $("#remain").html("残り時間： " + rest); 
             analog(rest);
-        }
-        if(rest<=0){
+            if(rest<=0){
             active = false;
             alarm();
+            
+        }
         }
         
     } 
@@ -235,7 +246,7 @@
 
     <div id="remain">Remaining time</div>
     <div id="time">Time</div>
-    <button id="btnA">ButtonA</button>  
+    <button id="btnA">Start</button>  
     <button id="btnB">ButtonB</button>  
     <button id="btnC">ButtonC</button>  
     <input type="number" id="minute" value=3 >
