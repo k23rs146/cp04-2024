@@ -39,6 +39,15 @@
         $('#btnC').click(function(e) {
             btnCClick(e);
         });
+        $('#btnD').click(function(e) {
+            btnDClick(e);
+        });
+        $('#btnE').click(function(e) {
+            btnEClick(e);
+        });
+        $('#btnF').click(function(e) {
+            btnFClick(e);
+        });
         init();
     });
     
@@ -162,9 +171,11 @@
     // ボタンの初期設定
     function init(){
         $('#btnA').prop('disabled', false);
-        $('#btnB').prop('disabled', false);
+        $('#btnB').prop('disabled', true);
         $('#btnC').prop('disabled', false);
-        
+        $('#btnD').prop('disabled', true);
+        $('#btnE').prop("disabled", false);
+        $('#btnF').prop("disabled", false);
     }
 
     // Alarmの処理
@@ -189,6 +200,9 @@
         startTime = new Date(); 
         $(btnA).prop("disabled", true);
         $(btnB).prop("disabled", false);
+        $(btnC).prop("disabled", true);
+        $(btnD).prop("disabled", true);
+        
         
     }
 
@@ -197,6 +211,8 @@
         active = false; 
         $(btnA).prop("disabled", false);
         $(btnB).prop("disabled", true);
+        $(btnC).prop("disabled", false);
+        $(btnD).prop("disabled", false);
     }
 
     // ButtonCがクリックされた時の処理
@@ -206,9 +222,32 @@
         period = 60* parseInt( $("#minute").val() ) + parseInt( $("#second").val() );
         $("#time").html("経過時間： 0");
         $("#remain").html("残り時間： " + period);
+        $(btnB).prop("disabled", true);
+        $(btnD).prop("disabled", true);
         
     }
-    
+     // ButtonDがクリックされた時の処理
+    function btnDClick(e){
+        active = true; 
+        startTime =  new Date(new Date() - etime*1000); 
+    }
+   // ButtonEがクリックされた時の処理
+    function btnEClick(e){
+        var canvas = $("#mycanvas")[0];
+        var ctx = canvas.getContext("2d");
+        var img = new Image();
+        img.src = "season_character3_autumn_momiji_ichou.png";     
+        img.onload = function() {    
+        ctx.drawImage(img, 10, 0, 220, 200);
+        }
+
+    } 
+     // ButtonDがクリックされた時の処理
+    function btnFClick(e){
+        period = 60* parseInt( 10 ) +parseInt(0);
+        $("#time").html("経過時間： 0");
+        $("#remain").html("残り時間： " + period);
+    }
  
     // 繰り返し実行する処理
     function timer(){  
@@ -221,11 +260,10 @@
             if(rest<=0){
             active = false;
             alarm();
-            
+            }
         }
-        }
-        
     } 
+
 
   </script>
 </head>
@@ -239,7 +277,10 @@
     <div id="time">Time</div>
     <button id="btnA">Start</button>  
     <button id="btnB">Stop</button>  
-    <button id="btnC">Set</button>  
+    <button id="btnC">Set</button>
+    <button id="btnD">Restart</button> 
+    <button id="btnE">秋</button>
+    <button id="btnF">10分</button>  
     <input type="number" id="minute" value=0 >
     <input type="number" id="second" value=15 >
 </body>
